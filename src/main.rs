@@ -1,4 +1,8 @@
 mod app;
+mod router;
+mod components;
+mod data;
+mod contexts;
 
 use app::App;
 
