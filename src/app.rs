@@ -1,12 +1,18 @@
 use yew::prelude::*;
+use yew_router::prelude::*;
+use crate::router::{Route, switch};
+use crate::components::header::Header;
 
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-        <main>
-            <img class="logo" src="https://yew.rs/img/logo.svg" alt="Yew logo" />
-            <h1>{ "Hello World!" }</h1>
-            <span class="subtitle">{ "from Yew with " }<i class="heart" /></span>
-        </main>
+        <BrowserRouter>
+            <div class="min-h-screen flex flex-col bg-white dark:bg-gray-900 transition-colors duration-200">
+                <Header />
+                <main class="flex-grow">
+                    <Switch<Route> render={switch} />
+                </main>
+            </div>
+        </BrowserRouter>
     }
 }

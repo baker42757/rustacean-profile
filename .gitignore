@@ -1,2 +1,8 @@
 /dist/
 /target/
+/node_modules/
+# Keep assets folder but ignore large image files in git (optional)
+# assets/images/*.png
+# assets/images/*.jpg
+# assets/images/*.jpeg
+# assets/images/*.webp

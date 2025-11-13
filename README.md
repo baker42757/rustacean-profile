@@ -25,7 +25,24 @@ Simply run the following command to install it:
 cargo install trunk wasm-bindgen-cli
 ```
 
-That's it, we're done!
+### Tailwind CSS Setup
+
+This project uses Tailwind CSS. Install Node.js and npm if you haven't already, then install Tailwind CSS:
+
+```bash
+npm install
+```
+
+This will install Tailwind CSS CLI. The `tailwind.config.js` file is configured to scan your Rust source files for Tailwind classes.
+
+#### Available npm Scripts
+
+- **`npm run dev`** or **`npm start`** - Start development server (runs Tailwind watch + Trunk serve together)
+- **`npm run dev:css`** - Watch mode for Tailwind CSS only (auto-rebuilds on file changes, no minification)
+- **`npm run build:dev`** - One-time development build (no minification, faster)
+- **`npm run build:prod`** or **`npm run build`** - Production build (minified and optimized)
+
+**Note:** Use `npm run dev` for the easiest development experience - it runs both Tailwind CSS watch mode and Trunk serve in parallel. Trunk will also automatically build Tailwind CSS before serving/building via the hook in `Trunk.toml`. For production builds, run `npm run build:prod` before `trunk build --release` to ensure minified CSS.
 
 ### Troubleshooting
 
@@ -48,21 +65,35 @@ Then run `cargo clean` to remove any artifacts compiled with the wrong compiler,
 
 ### Running
 
+**Recommended (runs Tailwind CSS watch + Trunk serve together):**
+```bash
+npm run dev
+```
+
+**Or use the alias:**
+```bash
+npm start
+```
+
+**Or use Trunk directly:**
 ```bash
 trunk serve
 ```
 
-Rebuilds the app whenever a change is detected and runs a local server to host it.
+All commands rebuild the app whenever a change is detected and run a local server to host it.
 
 There's also the `trunk watch` command which does the same thing but without hosting it.
 
 ### Release
 
+For production builds, first build the optimized Tailwind CSS:
+
 ```bash
+npm run build:prod
 trunk build --release
 ```
 
-This builds the app in release mode similar to `cargo build --release`.
+This builds the app in release mode similar to `cargo build --release` with minified CSS.
 You can also pass the `--release` flag to `trunk serve` if you need to get every last drop of performance.
 
 Unless overwritten, the output will be located in the `dist` directory.
@@ -74,7 +105,7 @@ There are a few things you have to adjust when adopting this template.
 ### Remove example code
 
 The code in [src/main.rs](src/main.rs) specific to the example is limited to only the `view` method.
-There is, however, a fair bit of Sass in [index.scss](index.scss) you can remove.
+The styling uses Tailwind CSS utility classes in [src/app.rs](src/app.rs).
 
 ### Update metadata
 
