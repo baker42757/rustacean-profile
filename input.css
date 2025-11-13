@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer utilities {
   .bg-grid-pattern {
     background-image: 
@@ -68,20 +74,20 @@
   }
   
   .profile-picture-frame {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 8px solid #dc2626;
-    padding: 4px;
+    border: 6px solid #dc2626;
+    padding: 3px;
     background: #dc2626;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   @media (min-width: 768px) {
     .profile-picture-frame {
-      width: 240px;
-      height: 240px;
-      border-width: 10px;
+      width: 160px;
+      height: 160px;
+      border-width: 7px;
     }
   }
   

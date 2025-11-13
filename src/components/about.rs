@@ -12,7 +12,7 @@ pub fn about() -> Html {
     ];
 
     html! {
-        <section class="py-20 px-4 bg-white dark:bg-gray-800 transition-colors duration-200">
+        <section id="about" class="py-20 px-4 bg-white dark:bg-gray-800 transition-colors duration-200 scroll-mt-16">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">

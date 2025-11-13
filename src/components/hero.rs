@@ -1,11 +1,9 @@
 use yew::prelude::*;
-use yew_router::prelude::*;
-use crate::router::Route;
 
 #[function_component(Hero)]
 pub fn hero() -> Html {
     html! {
-        <section class="min-h-screen flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-200 py-20">
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-200 py-20">
             <div class="text-center px-4 max-w-4xl mx-auto">
                 <div class="mb-8 animate-fade-in">
                     <div class="profile-picture-container">
@@ -31,22 +29,22 @@ pub fn hero() -> Html {
 
                 <nav class="mb-16">
                     <div class="flex flex-wrap justify-center gap-6 md:gap-8">
-                        <Link<Route> to={Route::About} 
-                            classes="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                        <a href="#about" 
+                            class="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors scroll-smooth">
                             {"About"}
-                        </Link<Route>>
+                        </a>
                         <a href="#subscribe" 
-                            class="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                            class="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors scroll-smooth">
                             {"Subscribe"}
                         </a>
                         <a href="#book" 
-                            class="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                            class="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors scroll-smooth">
                             {"Book"}
                         </a>
-                        <Link<Route> to={Route::Projects} 
-                            classes="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                        <a href="#projects" 
+                            class="text-lg font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400 transition-colors scroll-smooth">
                             {"Projects"}
-                        </Link<Route>>
+                        </a>
                     </div>
                 </nav>
 

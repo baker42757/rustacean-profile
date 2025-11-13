@@ -1,43 +1,24 @@
 use yew::prelude::*;
-use yew_router::prelude::*;
-use crate::router::Route;
 use crate::contexts::theme::{use_theme, Theme};
 
 #[function_component(Header)]
 pub fn header() -> Html {
-    let current_route = use_route::<Route>();
     let (theme, toggle_theme) = use_theme();
     
-    let nav_link_classes = |route: Route| -> Classes {
-        let base = classes!("px-4", "py-2", "rounded-lg", "transition-colors", "duration-200", "font-medium");
-        if current_route.as_ref() == Some(&route) {
-            classes!(base, "bg-blue-600", "dark:bg-blue-500", "text-white")
-        } else {
-            classes!(base, "text-gray-700", "dark:text-gray-300", "hover:bg-blue-50", "dark:hover:bg-gray-700", "hover:text-blue-600", "dark:hover:text-blue-400")
-        }
+    let nav_link_classes = || -> Classes {
+        classes!("px-4", "py-2", "rounded-lg", "transition-colors", "duration-200", "font-medium", "text-gray-700", "dark:text-gray-300", "hover:bg-blue-50", "dark:hover:bg-gray-700", "hover:text-blue-600", "dark:hover:text-blue-400")
     };
 
     html! {
         <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md border-b border-gray-200 dark:border-gray-700">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
-                    <Link<Route> to={Route::Home} classes="signature-text text-2xl md:text-3xl font-signature bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all">
+                    <a href="#home" class="signature-text text-2xl md:text-3xl font-signature bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all scroll-smooth">
                         {"Jan Piekarz"}
-                    </Link<Route>>
+                    </a>
                     <div class="flex items-center space-x-4">
-                        <div class="hidden md:flex items-center space-x-2">
-                            <Link<Route> to={Route::Home} classes={nav_link_classes(Route::Home)}>
-                                {"Home"}
-                            </Link<Route>>
-                            <Link<Route> to={Route::About} classes={nav_link_classes(Route::About)}>
-                                {"About"}
-                            </Link<Route>>
-                            <Link<Route> to={Route::Projects} classes={nav_link_classes(Route::Projects)}>
-                                {"Projects"}
-                            </Link<Route>>
-                        </div>
                         <button 
-                            onclick={move |_| toggle_theme.emit(())}
+                            onclick={move |_| toggle_theme.emit(Callback::noop())}
                             class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                             aria-label="Toggle theme"
                         >
@@ -55,6 +36,15 @@ pub fn header() -> Html {
                                 }
                             }}
                         </button>
+                        <div class="hidden md:flex items-center space-x-2">
+                            <a href="#about" class={nav_link_classes()}>
+                                {"About"}
+                            </a>
+                            <a href="#projects" class={nav_link_classes()}>
+                                {"Projects"}
+                            </a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
